@@ -7,6 +7,14 @@ public class MainGui {
         NumberGenerator NG = new NumberGenerator(monday, Wednesday);
         int numOfPeople = NG.GetSemiRandomWaitTime("Monday",-1);//test to run the method getSemi
         System.out.println("The amount of people is " + numOfPeople);
+        int summer = 0;//summation counter
+        for(int i =0; i< numOfPeople; i++){//the total amount of time it takes for every person added up to get tested at a given time
+            summer+=NG.GetWaitTime();
+        }
+        summer = summer/11; // this is for the amount of tables to go to to get tested.
+        int totalTime = summer;
+        System.out.println("Your wait time is "+ (totalTime/60)+":"+ totalTime%60);
+
 
     }
 
