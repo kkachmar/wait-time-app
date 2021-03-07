@@ -1,4 +1,3 @@
-import java.math.*;
 
 import java.util.Date;
 import java.util.Random;
@@ -42,14 +41,23 @@ public class NumberGenerator {
         }
             else{
                 System.out.println(Time);
-
         }
-
-
-
-
-
-
         return 0;
+    }
+
+    public int GetWaitTime(){
+        int Stage1SecondsPerPerson= 75;// the amount of time it takes to get your vial and register your name
+        if((int)(Math.random()*1000) == 4){//i in 1000 chance it takes double the time if a messup occurs
+            Stage1SecondsPerPerson *= 2;
+        }
+        int Stage2SecondsPerPerson = 70; //the time time it takes to do the nose swab
+        int TimeToWalk = 45;//time to walk from gathering vial to test taking station
+        Random Rand = new Random();
+        Stage1SecondsPerPerson = (int) (Rand.nextGaussian()*10)+ Stage1SecondsPerPerson;
+        Stage2SecondsPerPerson= (int) (Rand.nextGaussian()*10)+Stage2SecondsPerPerson;
+        TimeToWalk= (int) (Rand.nextGaussian()*7)+ TimeToWalk;
+        int totalTimePerPerson = Stage1SecondsPerPerson + TimeToWalk + Stage2SecondsPerPerson;
+        return(totalTimePerPerson);
+
     }
 }
