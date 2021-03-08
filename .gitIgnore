@@ -6,3 +6,4 @@ bin/
 .idea/
 *.iml
 .DS_Store
+/StudentRecords*.txt
