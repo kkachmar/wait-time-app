@@ -24,9 +24,14 @@ public class MainGui extends JFrame{
         int[] Wednesday = {40,33,65,42,35,45,15};
         NumberGenerator NG = new NumberGenerator(monday, Wednesday);
         //need logic to pick monday or wednesday based on selection
-
-
-        int numOfPeople = NG.GetSemiRandomWaitTime("Monday",-1);//test to run the method getSemi
+        String day = "";
+        if( selection == 1){
+            day = "Monday";
+           
+         else{
+             day = "Wednesday"
+         }   
+        int numOfPeople = NG.GetSemiRandomWaitTime(day,-1);//test to run the method getSemi
         System.out.println("The amount of people is " + numOfPeople);
         int summer = 0;//summation counter
         for(int i =0; i< numOfPeople; i++){//the total amount of time it takes for every person added up to get tested at a given time
