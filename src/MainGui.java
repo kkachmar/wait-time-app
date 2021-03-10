@@ -4,6 +4,7 @@ import java.awt.*;
 
 public class MainGui extends JFrame{
     protected Toolbar toolbar;
+    protected WaitTimeDisplay waitTimePanel;
 
     MainGui(){
         super("Wait Time");
@@ -13,6 +14,9 @@ public class MainGui extends JFrame{
 
         toolbar = new Toolbar(this);
         this.add(toolbar, BorderLayout.NORTH);
+
+        waitTimePanel = new WaitTimeDisplay();
+        this.add(waitTimePanel);
 
         setVisible(true);
 
@@ -39,12 +43,10 @@ public class MainGui extends JFrame{
         }
         summer = summer/11; // this is for the amount of tables to go to to get tested.
         int totalTime = summer;
-        System.out.println("Your wait time is "+ (totalTime/60)+":"+ totalTime%60);
+        waitTimePanel.updateMessage("Your wait time is "+ (totalTime/60)+":"+ totalTime%60+" minutes.");
     }
 
     public static void main(String[] args){
        MainGui main = new MainGui();
-       main.run(1);
-
     }
 }
