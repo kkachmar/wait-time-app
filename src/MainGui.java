@@ -25,11 +25,11 @@ public class MainGui extends JFrame{
         NumberGenerator NG = new NumberGenerator(monday, Wednesday);
         //need logic to pick monday or wednesday based on selection
         String day = "";
-        if( selection == 1){
+        if( selection == 1) {
             day = "Monday";
-           
+        }
          else{
-             day = "Wednesday"
+             day = "Wednesday";
          }   
         int numOfPeople = NG.GetSemiRandomWaitTime(day,-1);//test to run the method getSemi
         System.out.println("The amount of people is " + numOfPeople);
