@@ -8,8 +8,11 @@ public class TestCenterHours {
 		
 	}
 	public String isOpen(String day, int hour) {
-		if ((day.equals("monday")||day.equals("wednesday"))&&(hour>=10&&hour<=4)) 
+		if ((day.equals("monday")||day.equals("wednesday"))&&(hour>=10&&hour<=4)) {
+			
 			return "We're open!";
+		}
+			
 		
 		else if (day.equals("tuesday")||(day.equals("monday")&&hour>4)||(day.equals("wednesday")&&hour<10)) 
 			return "Sorry we're closed. We'll be open Wednesday at 10 AM";
