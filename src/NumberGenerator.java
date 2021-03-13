@@ -3,6 +3,7 @@ import java.util.Date;
 import java.util.Random;
 
 public class NumberGenerator {
+
     int[] Monday = new int[7];
     int[] Wednesday = new int[7];
 
@@ -84,4 +85,5 @@ public class NumberGenerator {
         return(Stage1SecondsPerPerson);
 
     }
+
 }
