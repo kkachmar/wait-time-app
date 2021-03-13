@@ -7,8 +7,12 @@ public class CheckResults {
 	}
 
 	public String getResults(String QUID) {
+		int activeCases = 5;
 		HashMap <String, String> testResults = new HashMap <String, String>();
 		if (testResults.containsKey(QUID)) {
+			if (testResults.get(QUID).equals("positive")) {
+				activeCases++;
+			}
 			return "Your test results are "+testResults.get(QUID)+".";
 		}
 		else {
@@ -22,6 +26,7 @@ public class CheckResults {
 
 			else {
 				testResults.put(QUID,"positive");
+				activeCases++;
 				return "Your test results are positive.";
 			}
 		}
