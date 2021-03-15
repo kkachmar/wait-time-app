@@ -7,8 +7,9 @@ public class ResultsPanel extends JPanel{
     private CheckResults results;
 
     ResultsPanel(MainGui gui) {
-        setLayout(new GridLayout());
+        setLayout(new FlowLayout());
         setBackground(Color.BLUE);
+        results = new CheckResults();
 
         JPanel idLine = new JPanel();
         idLine.add(new JLabel("QU ID:"));
@@ -25,19 +26,20 @@ public class ResultsPanel extends JPanel{
         this.add(passwordLine);
 
         JButton submitButton = new JButton("Submit");
-        this.add(submitButton);
 
+        JLabel resultsLine = new JLabel("");
+        this.add(resultsLine);
 
         submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 String id = idField.getText();
-                String password = passwordField.getText();
+                String password = passwordField.getPassword().toString();
 
-                if ((id != null) && (password != null)) {
-                    results.getResults(id);
-                } else if (id == null) {
+                if ((!id.equals("")) && (!password.equals(""))) {
+                    resultsLine.setText(results.getResults(id));
+                } else if (id.equals("")) {
+                    System.out.println("popup");
                     JFrame errorFrame = new JFrame();
                     errorFrame.setSize(200, 100);
                     errorFrame.add(new JLabel("Please enter your QUID"));
@@ -55,6 +57,7 @@ public class ResultsPanel extends JPanel{
             }
         });
 
+        this.add(submitButton);
         this.setVisible(true);
 
     }
