@@ -65,6 +65,7 @@ public class MainGui extends JFrame{
         String mins = myFormatter.format(totalTime/60);
         String Secs = myFormatter.format(totalTime%60);
         waitTimePanel.updateMessage("Your wait time is "+ mins+" Min "+ Secs +" Sec");
+
     }
 
     public static void main(String[] args){
