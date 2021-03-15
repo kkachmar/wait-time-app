@@ -1,6 +1,7 @@
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
+import java.io.IOException;
 
 public class Toolbar extends JPanel{
 
@@ -29,9 +30,17 @@ public class Toolbar extends JPanel{
                 @Override
                 public void actionPerformed(ActionEvent e) {
                    if(dayOfWeek.getSelectedItem() == "Monday"){
-                        gui.run(1);
+                       try {
+                           gui.run(1);
+                       } catch (IOException ioException) {
+                           ioException.printStackTrace();
+                       }
                    } else if (dayOfWeek.getSelectedItem() == "Wednesday"){
-                       gui.run(3);
+                       try {
+                           gui.run(3);
+                       } catch (IOException ioException) {
+                           ioException.printStackTrace();
+                       }
                    } else {
                        JFrame errorFrame = new JFrame();
                        errorFrame.setSize(200,100);
