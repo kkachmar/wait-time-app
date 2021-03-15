@@ -1,19 +1,38 @@
 import java.text.DecimalFormat;
 import java.util.Random;
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 
 public class MainGui extends JFrame{
     protected Toolbar toolbar;
+    protected WaitTimeDisplay waitTimePanel;
+    protected ResultsPanel resultsPanel;
+
+
 
     MainGui(){
         super("Wait Time");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(500,800);
-        setLayout(new BorderLayout());
+        setLayout(new GridLayout(6,3));
 
-        toolbar = new Toolbar(this);
-        this.add(toolbar, BorderLayout.NORTH);
+        //add wait time panel
+        waitTimePanel = new WaitTimeDisplay(this);
+        this.add(waitTimePanel);
+
+        //add results lookup
+        resultsPanel = new ResultsPanel(this);
+        this.add(resultsPanel);
+
+
+
+
+
+
+
+
+
 
         setVisible(true);
 
@@ -40,16 +59,16 @@ public class MainGui extends JFrame{
         }
         summer = summer/11; // this is for the amount of tables to go to to get tested.
         int totalTime = summer;
+
         totalTime = totalTime/5;
         DecimalFormat myFormatter = new DecimalFormat("00");
         String mins = myFormatter.format(totalTime/60);
         String Secs = myFormatter.format(totalTime%60);
-        System.out.println("Your wait time is "+ mins+" Min "+ Secs +" Sec");
+        waitTimePanel.updateMessage("Your wait time is "+ mins+" Min "+ Secs +" Sec");
+
     }
 
     public static void main(String[] args){
        MainGui main = new MainGui();
-       main.run(1);
-
     }
 }

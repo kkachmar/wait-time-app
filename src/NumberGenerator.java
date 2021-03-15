@@ -7,7 +7,7 @@ public class NumberGenerator {
     int[] Monday = new int[7];
     int[] Wednesday = new int[7];
 
-    public NumberGenerator(int[] monday, int[] wednesday) {//inisialize the time intervals for the amount of people on line at the testing center
+    public NumberGenerator(int[] monday, int[] wednesday) {//initialize the time intervals for the amount of people on line at the testing center
         Monday =monday;
         Wednesday = wednesday;
     }
