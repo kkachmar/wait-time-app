@@ -13,24 +13,29 @@ public class StudentRecordReader {
     int PM02;
     int PM03;
     int PM04;
+    int[] TimeRecords;
+    String Day;
 
-    public StudentRecordReader(){
+    public StudentRecordReader(String DOW) throws FileNotFoundException {
         //what i could do is create an array instead so that i could traverse this easier
-        int AM10 = 0;
-        int AM11 = 0;
-        int PM12 = 0;
-        int PM01 = 0;
-        int PM02 = 0;
-        int PM03 = 0;
-        int PM04 = 0;
+         AM10 = 0;
+         AM11 = 0;
+         PM12 = 0;
+         PM01 = 0;
+         PM02 = 0;
+         PM03 = 0;
+         PM04 = 0;
+        TimeRecords = new int[]{AM10, AM11, PM12, PM01, PM02, PM03, PM04};
+        Day= DOW;
+        this.run(Day);
 
     }
-    public void run() throws FileNotFoundException {
+    public void run(String DOW ) throws FileNotFoundException {//DOW Day of week
+        DOW = DOW.toUpperCase();
         String date = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
-        File Records = new File("../StudentRecords"+date+".txt");
+        File Records = new File("../StudentRecords"+date+"-"+DOW+".txt");
         Scanner in;
         in = new Scanner(Records);
-        //System.err.println("No file found in the directory that you gave");
         //what the input should read: [time]: FName LName QUID
         //This will be put into the system when a student taps card when getting tested
         int count = 0;
@@ -63,9 +68,12 @@ public class StudentRecordReader {
                     PM04++;
                     break;
             }
+            String name = Line.split(" ")[1] + " "+ Line.split(" ")[2];
+            String QUIDNum = Line.split(" ")[3];
+
 
         }
-        int[] TimeRecords = {AM10,AM11,PM12,PM01,PM02,PM03,PM04};
+         TimeRecords = new int[] {AM10,AM11,PM12,PM01,PM02,PM03,PM04};
         String[] Times = {"10","11","12","01","02","03","04"};
         int counterz = 0;
         System.out.println("Hour Total");
@@ -78,9 +86,15 @@ public class StudentRecordReader {
 
 
     }
+    public int[] ValsOfTimes(){//can only be ran after insisializing day aka running run
+        return TimeRecords;
+    }
 
+    /**
+     * only used for testing the class works
     public static void main(String[] args) throws FileNotFoundException {
         StudentRecordReader RR = new StudentRecordReader();
-        RR.run();
+        RR.run("Monday");
     }
+     **/
 }

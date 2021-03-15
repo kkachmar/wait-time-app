@@ -14,12 +14,18 @@ public class StudentRecordCreator {
 
 
 
-    public StudentRecordCreator() throws IOException {
+    public StudentRecordCreator(String DOW) throws IOException {
+        DOW = DOW.toUpperCase();
         String date = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
-        File Records = new File("../StudentRecords"+date+".txt");
+        File Records = new File("../StudentRecords"+date+"-"+DOW+".txt");
         FileWriter writer = new FileWriter(Records);
         //time is from 10am to 5pm
-        //
+        if(DOW.equals("MONDAY")) {
+            writer.write("[10:44] " + "John Doe" + " " + -1 + "\n");//john doe will be used to identify a patient with a known quid for monday
+        }
+        else{
+            writer.write("[11:43] " + "Joan Doe" + " " + -2 + "\n");//Joan doe will be used to identify a patient with a known quid for wednesday
+        }
         String TimeHR = "";
         int HRHolder = 0;
         int MINHolder = 0;
@@ -73,7 +79,7 @@ public class StudentRecordCreator {
     }
 
     public static void main(String[] args) throws IOException {
-        StudentRecordCreator RC = new StudentRecordCreator();
+        StudentRecordCreator RC = new StudentRecordCreator("Monday");
 
     }
 }

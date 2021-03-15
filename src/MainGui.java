@@ -1,3 +1,12 @@
+/**
+ * still need to work on
+ * being able to close the error window without closing the whole jframe
+ * not printing out the hour total values anymore
+ * being able to inisialize the people in the records into the hash map
+ * fixing up the logic in check results
+ */
+
+import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.Random;
 import javax.swing.*;
@@ -8,10 +17,10 @@ public class MainGui extends JFrame{
     protected Toolbar toolbar;
     protected WaitTimeDisplay waitTimePanel;
     protected ResultsPanel resultsPanel;
+    protected StudentRecordReader ReadM;
+    protected StudentRecordReader ReadW;
 
-
-
-    MainGui(){
+    MainGui() throws IOException {
         super("Wait Time");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(500,800);
@@ -25,23 +34,18 @@ public class MainGui extends JFrame{
         resultsPanel = new ResultsPanel(this);
         this.add(resultsPanel);
 
-
-
-
-
-
-
-
-
-
         setVisible(true);
+        StudentRecordCreator RcM = new StudentRecordCreator("MONDAY");
+        StudentRecordCreator RcW = new StudentRecordCreator("WEDNESDAY");
+         ReadM = new StudentRecordReader("MONDAY");
+         ReadW = new StudentRecordReader("WEDNESDAY");
 
     }
 
 
-    public void run(int selection){
-        int[] monday = {299,278,318,269,268,274,294};//{30, 18, 55, 43, 10, 32, 20};
-        int[] Wednesday = {284,280,275,284,274,282,321};//{40,33,65,42,35,45,15};
+    public void run(int selection) throws IOException {//add a time slot so that i can chose the correct time
+        int[] monday = ReadM.ValsOfTimes();
+        int[] Wednesday = ReadW.ValsOfTimes();
         NumberGenerator NG = new NumberGenerator(monday, Wednesday);
         //need logic to pick monday or wednesday based on selection
         String day = "";
@@ -68,7 +72,7 @@ public class MainGui extends JFrame{
 
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args) throws IOException {
        MainGui main = new MainGui();
     }
 }
