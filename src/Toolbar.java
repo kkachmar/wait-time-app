@@ -49,6 +49,7 @@ public class Toolbar extends JPanel{
                     }
                     int Hour = Integer.parseInt(HR);
                     if (AMORPM.equals("AM") && Hour >= 10 && Hour <= 11 || AMORPM.equals("PM") && Hour % 12 <= 4) {
+                        System.out.println((String) timeInHours.getSelectedItem());
                         if (dayOfWeek.getSelectedItem() == "Monday") {
                             try {
                                 gui.run(1, (String) timeInHours.getSelectedItem());
@@ -65,9 +66,14 @@ public class Toolbar extends JPanel{
                             JFrame errorFrame = new JFrame();
                             errorFrame.setSize(200, 100);
                             errorFrame.add(new JLabel("Testing Center is Closed"));
-                            errorFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
                             errorFrame.setVisible(true);
                         }
+                    }
+                    else {
+                        JFrame errorFrame = new JFrame();
+                        errorFrame.setSize(200, 100);
+                        errorFrame.add(new JLabel("Testing Center is Closed"));
+                        errorFrame.setVisible(true);
                     }
                 }
             });

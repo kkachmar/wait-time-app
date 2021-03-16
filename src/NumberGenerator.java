@@ -48,7 +48,7 @@ public class NumberGenerator {
             //this is when they input
         }else {
             int realTime = Integer.parseInt(CurTime);
-            if(realTime >9 && realTime<13 && Time.substring(Time.length()-2).equals("AM")|| realTime >0 && realTime <5 &&Time.substring(Time.length()-2).equals("PM")) {
+            if(realTime >9 && realTime<12 && Time.contains("AM")|| (realTime%12 >= 0 && realTime%12 <5) &&Time.contains("PM")) {
                 int TimeSlot = Integer.parseInt(CurTime);
                 if(TimeSlot<10){
                     TimeSlot = TimeSlot +12;

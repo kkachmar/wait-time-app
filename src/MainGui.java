@@ -1,9 +1,9 @@
 /**
+ *
+ *
  * still need to work on
- * being able to close the error window without closing the whole jframe
- * not printing out the hour total values anymore
  * being able to inisialize the people in the records into the hash map
- * fixing up the logic in check results
+ *
  */
 
 import java.io.IOException;

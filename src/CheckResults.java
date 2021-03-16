@@ -5,10 +5,15 @@ public class CheckResults {
 	public int activeCases;
 	public HashMap <String, String> testResults = new HashMap <String, String>();  
 
+	public CheckResults() {
+		activeCases = 5;
+		testResults = new HashMap <String, String>();
+	}
 	public CheckResults(int activecases, HashMap results) {
 		activeCases = activecases;
-		testResults = results;  
+		testResults = results;
 	}
+
 
 	public String getResults(String QUID) {
 		
