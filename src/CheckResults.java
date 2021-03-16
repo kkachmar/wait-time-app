@@ -36,4 +36,10 @@ public class CheckResults {
 
 
 	}
+	public HashMap getHash() {
+		return (this.testResults);
+	}
+	public void SetHash(HashMap hash){
+		this.testResults = hash;
+	}
 }

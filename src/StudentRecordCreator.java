@@ -60,12 +60,10 @@ public class StudentRecordCreator {
             for (int i = 0; i < 7; i++) {
                 id += (int) (Math.random() * 9);
             }
-            if(QUIDs.contains(id)){
-                flag = false;
-            }
-            else{
+            if(!QUIDs.contains(id)){
                 flag = true;
             }
+
         }
         QUIDs.add(id);
         return id;
