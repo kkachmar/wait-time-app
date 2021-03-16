@@ -76,15 +76,15 @@ public class StudentRecordReader {
          TimeRecords = new int[] {AM10,AM11,PM12,PM01,PM02,PM03,PM04};
         String[] Times = {"10","11","12","01","02","03","04"};
         int counterz = 0;
+        /**
+         * used for debug
         System.out.println("Hour Total");
         for(int i :TimeRecords){
             System.out.print(Times[counterz]+"   ");
             System.out.println(i);
             counterz++;
         }
-
-
-
+         **/
     }
     public int[] ValsOfTimes(){//can only be ran after insisializing day aka running run
         return TimeRecords;

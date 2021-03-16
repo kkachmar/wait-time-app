@@ -43,7 +43,7 @@ public class MainGui extends JFrame{
     }
 
 
-    public void run(int selection) throws IOException {//add a time slot so that i can chose the correct time
+    public void run(int selection,String Time) throws IOException {//add a time slot so that i can chose the correct time
         int[] monday = ReadM.ValsOfTimes();
         int[] Wednesday = ReadW.ValsOfTimes();
         NumberGenerator NG = new NumberGenerator(monday, Wednesday);
@@ -55,7 +55,7 @@ public class MainGui extends JFrame{
          else{
              day = "Wednesday";
          }   
-        int numOfPeople = NG.GetSemiRandomWaitTime(day,"4PM");//test to run the method getSemi
+        int numOfPeople = NG.GetSemiRandomWaitTime(day,Time);//test to run the method getSemi
         System.out.println("The amount of people is " + numOfPeople);
         int summer = 0;//summation counter
         for(int i =0; i< numOfPeople; i++){//the total amount of time it takes for every person added up to get tested at a given time

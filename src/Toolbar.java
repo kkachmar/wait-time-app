@@ -29,15 +29,26 @@ public class Toolbar extends JPanel{
             submit.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
+                    String time = (String) timeInHours.getSelectedItem();
+                    String HR = time.substring(0,2);
+                    String AMORPM = time.substring(1);
+                    if(HR.contains("P")||HR.contains("A")){
+                        HR = HR.substring(0,1);
+                    }
+                    else{
+                        AMORPM = AMORPM.substring(1);
+                    }
+
+                    System.out.println("the time is "+HR);
                    if(dayOfWeek.getSelectedItem() == "Monday"){
                        try {
-                           gui.run(1);
+                           gui.run(1, (String) timeInHours.getSelectedItem());
                        } catch (IOException ioException) {
                            ioException.printStackTrace();
                        }
                    } else if (dayOfWeek.getSelectedItem() == "Wednesday"){
                        try {
-                           gui.run(3);
+                           gui.run(3,(String) timeInHours.getSelectedItem());
                        } catch (IOException ioException) {
                            ioException.printStackTrace();
                        }
