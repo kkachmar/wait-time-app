@@ -8,10 +8,13 @@ public class ResultsPanel extends JPanel{
 
     ResultsPanel(MainGui gui) {
         setLayout(new FlowLayout());
-        setBackground(Color.BLUE);
+        setBackground(new Color(66, 194, 245));
         results = new CheckResults();
 
+
         JPanel idLine = new JPanel();
+        idLine.setBackground(new Color(66, 194, 245));
+        idLine.setForeground(Color.WHITE);
         idLine.add(new JLabel("QU ID:"));
         JTextField idField = new JTextField();
         idField.setColumns(10);
@@ -19,13 +22,15 @@ public class ResultsPanel extends JPanel{
         this.add(idLine);
 
         JPanel passwordLine = new JPanel();
+        passwordLine.setBackground(new Color(66, 194, 245));
+        passwordLine.setForeground(Color.WHITE);
         passwordLine.add(new JLabel("Password:"));
         JPasswordField passwordField = new JPasswordField();
         passwordField.setColumns(10);
         passwordLine.add(passwordField);
         this.add(passwordLine);
 
-        JButton submitButton = new JButton("Submit");
+        JButton submitButton = new JButton("View Test Results");
 
         JLabel resultsLine = new JLabel("");
         resultsLine.setForeground(Color.white);
