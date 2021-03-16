@@ -13,13 +13,14 @@ public class MainGui extends JFrame{
     protected ResultsPanel resultsPanel;
     protected StudentRecordReader ReadM;
     protected StudentRecordReader ReadW;
+    protected ResourcesPanel resourcesPanel;
 
 
     MainGui() throws IOException {
         super("Wait Time");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize(500,800);
-        setLayout(new GridLayout(6,3));
+        setSize(500,500);
+        setLayout(new GridLayout(3,3));
 
         //add wait time panel
         waitTimePanel = new WaitTimeDisplay(this);
@@ -28,6 +29,10 @@ public class MainGui extends JFrame{
         //add results lookup
         resultsPanel = new ResultsPanel(this);
         this.add(resultsPanel);
+
+        //add resources
+        resourcesPanel = new ResourcesPanel(this);
+        this.add(resourcesPanel);
 
         setVisible(true);
         StudentRecordCreator RcM = new StudentRecordCreator("MONDAY");
