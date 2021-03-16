@@ -28,6 +28,7 @@ public class ResultsPanel extends JPanel{
         JButton submitButton = new JButton("Submit");
 
         JLabel resultsLine = new JLabel("");
+        resultsLine.setForeground(Color.white);
         this.add(resultsLine);
 
         submitButton.addActionListener(new ActionListener() {
@@ -56,6 +57,8 @@ public class ResultsPanel extends JPanel{
                 }
             }
         });
+
+
 
         this.add(submitButton);
         this.setVisible(true);
