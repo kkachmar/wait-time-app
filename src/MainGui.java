@@ -1,10 +1,4 @@
-/**
- *
- *
- * still need to work on
- * being able to inisialize the people in the records into the hash map
- *
- */
+
 
 import java.io.IOException;
 import java.text.DecimalFormat;
