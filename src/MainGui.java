@@ -20,6 +20,7 @@ public class MainGui extends JFrame{
     protected StudentRecordReader ReadM;
     protected StudentRecordReader ReadW;
 
+
     MainGui() throws IOException {
         super("Wait Time");
         setDefaultCloseOperation(EXIT_ON_CLOSE);

@@ -17,8 +17,6 @@ public class NumberGenerator {
         int[] curDay = {0,0,0,0,0,0,0};// inisialize the variable for the day of testing
         //12AM = Time
         String CurTime = Time.substring(0,Time.length()-2);
-        System.out.println("your time is "+CurTime);
-
         switch(Day.toUpperCase()) {
             case "MONDAY":
                 curDay = Monday;

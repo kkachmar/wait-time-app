@@ -17,10 +17,20 @@ public class Toolbar extends JPanel{
 
         JComboBox timeInHours = new JComboBox();
         for(int i = 1; i<=12; i++){
-            timeInHours.addItem(i+"AM");
+            if(i != 12) {
+                timeInHours.addItem(i + "AM");
+            }
+            else{
+                timeInHours.addItem(i + "PM");
+            }
         }
         for(int i = 1; i<=12; i++){
-            timeInHours.addItem(i+"PM");
+            if(i != 12) {
+                timeInHours.addItem(i + "PM");
+            }
+            else{
+                timeInHours.addItem(i + "AM");
+            }
         }
         this.add(timeInHours);
 
@@ -30,35 +40,35 @@ public class Toolbar extends JPanel{
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     String time = (String) timeInHours.getSelectedItem();
-                    String HR = time.substring(0,2);
+                    String HR = time.substring(0, 2);
                     String AMORPM = time.substring(1);
-                    if(HR.contains("P")||HR.contains("A")){
-                        HR = HR.substring(0,1);
-                    }
-                    else{
+                    if (HR.contains("P") || HR.contains("A")) {
+                        HR = HR.substring(0, 1);
+                    } else {
                         AMORPM = AMORPM.substring(1);
                     }
-
-                    System.out.println("the time is "+HR);
-                   if(dayOfWeek.getSelectedItem() == "Monday"){
-                       try {
-                           gui.run(1, (String) timeInHours.getSelectedItem());
-                       } catch (IOException ioException) {
-                           ioException.printStackTrace();
-                       }
-                   } else if (dayOfWeek.getSelectedItem() == "Wednesday"){
-                       try {
-                           gui.run(3,(String) timeInHours.getSelectedItem());
-                       } catch (IOException ioException) {
-                           ioException.printStackTrace();
-                       }
-                   } else {
-                       JFrame errorFrame = new JFrame();
-                       errorFrame.setSize(200,100);
-                       errorFrame.add(new JLabel("Testing Center is Closed"));
-                       errorFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-                       errorFrame.setVisible(true);
-                   }
+                    int Hour = Integer.parseInt(HR);
+                    if (AMORPM.equals("AM") && Hour >= 10 && Hour <= 11 || AMORPM.equals("PM") && Hour % 12 <= 4) {
+                        if (dayOfWeek.getSelectedItem() == "Monday") {
+                            try {
+                                gui.run(1, (String) timeInHours.getSelectedItem());
+                            } catch (IOException ioException) {
+                                ioException.printStackTrace();
+                            }
+                        } else if (dayOfWeek.getSelectedItem() == "Wednesday") {
+                            try {
+                                gui.run(3, (String) timeInHours.getSelectedItem());
+                            } catch (IOException ioException) {
+                                ioException.printStackTrace();
+                            }
+                        } else {
+                            JFrame errorFrame = new JFrame();
+                            errorFrame.setSize(200, 100);
+                            errorFrame.add(new JLabel("Testing Center is Closed"));
+                            errorFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+                            errorFrame.setVisible(true);
+                        }
+                    }
                 }
             });
 
